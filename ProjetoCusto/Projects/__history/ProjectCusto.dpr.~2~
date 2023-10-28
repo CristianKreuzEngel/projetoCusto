@@ -1,0 +1,22 @@
+program ProjectCusto;
+
+uses
+  Vcl.Forms,
+  unPrincipal in 'unPrincipal.pas' {Form1},
+  unConnection in 'unConnection.pas' {DataModule1: TDataModule},
+  unCaixa in 'unCaixa.pas' {Form2},
+  unCadastro in 'unCadastro.pas' {Form3},
+  unTest in 'unTest.pas' {Form4};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TForm1, Form1);
+  Application.CreateForm(TDataModule1, DataModule1);
+  Application.CreateForm(TForm2, Form2);
+  Application.CreateForm(TForm3, Form3);
+  Application.CreateForm(TForm4, Form4);
+  Application.Run;
+end.

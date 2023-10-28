@@ -1,0 +1,32 @@
+program ProjectCusto;
+
+uses
+  Vcl.Forms,
+  unPrincipal in 'unPrincipal.pas' {fmMainMenu},
+  unConnection in 'unConnection.pas' {DataModule1: TDataModule},
+  unCaixa in 'unCaixa.pas' {formMovimentos},
+  unCadastroNota in 'unCadastroNota.pas' {formCadastroNotaP},
+  unTest in 'unTest.pas' {Form4},
+  unCadastroClient in 'unCadastroClient.pas' {formCadastroCliente},
+  unCadastroFornecedor in 'unCadastroFornecedor.pas' {formCadastroFornecedor},
+  unPesquisaCliente in 'unPesquisaCliente.pas' {formPesquisaCliente},
+  unRelatorioNotas in 'unRelatorioNotas.pas' {formRelatorioNota},
+  unRelatorioCadastros in 'unRelatorioCadastros.pas' {formRelatorioCadastro};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TfmMainMenu, fmMainMenu);
+  Application.CreateForm(TDataModule1, DataModule1);
+  Application.CreateForm(TformMovimentos, formMovimentos);
+  Application.CreateForm(TformCadastroNotaP, formCadastroNotaP);
+  Application.CreateForm(TForm4, Form4);
+  Application.CreateForm(TformCadastroCliente, formCadastroCliente);
+  Application.CreateForm(TformCadastroFornecedor, formCadastroFornecedor);
+  Application.CreateForm(TformPesquisaCliente, formPesquisaCliente);
+  Application.CreateForm(TformRelatorioNota, formRelatorioNota);
+  Application.CreateForm(TformRelatorioCadastro, formRelatorioCadastro);
+  Application.Run;
+end.

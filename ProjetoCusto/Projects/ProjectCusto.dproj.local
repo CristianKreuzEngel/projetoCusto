@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2023/08/15 20:08:05.000.776,=C:\Users\kreuz\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2023/08/15 20:17:20.000.072,C:\Users\kreuz\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit1.dfm=C:\Users\kreuz\OneDrive\Documentos\Embarcadero\Studio\Projects\unPrincipal.dfm</Transaction>
+    <Transaction>2023/08/15 20:17:20.000.072,C:\Users\kreuz\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit1.pas=C:\Users\kreuz\OneDrive\Documentos\Embarcadero\Studio\Projects\unPrincipal.pas</Transaction>
+    <Transaction>2023/08/15 20:17:27.000.523,C:\Users\kreuz\OneDrive\Documentos\Embarcadero\Studio\Projects\Project1.dproj=C:\Users\kreuz\OneDrive\Documentos\Embarcadero\Studio\Projects\ProjectCusto.dproj</Transaction>
+    <Transaction>2023/08/15 20:17:41.000.797,=C:\Users\kreuz\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2023/08/15 20:17:59.000.835,C:\Users\kreuz\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit1.dfm=C:\Users\kreuz\OneDrive\Documentos\Embarcadero\Studio\Projects\unConnection.dfm</Transaction>
+    <Transaction>2023/08/15 20:17:59.000.835,C:\Users\kreuz\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit1.pas=C:\Users\kreuz\OneDrive\Documentos\Embarcadero\Studio\Projects\unConnection.pas</Transaction>
+    <Transaction>2023/08/15 20:19:02.000.391,=C:\Users\kreuz\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
+    <Transaction>2023/08/15 20:19:13.000.302,C:\Users\kreuz\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit2.pas=C:\Users\kreuz\OneDrive\Documentos\Embarcadero\Studio\Projects\unCaixa.pas</Transaction>
+    <Transaction>2023/08/15 20:19:13.000.302,C:\Users\kreuz\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit2.dfm=C:\Users\kreuz\OneDrive\Documentos\Embarcadero\Studio\Projects\unCaixa.dfm</Transaction>
+    <Transaction>2023/08/15 20:19:26.000.983,=C:\Users\kreuz\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit3.pas</Transaction>
+    <Transaction>2023/08/15 20:20:23.000.270,C:\Users\kreuz\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit3.dfm=C:\Users\kreuz\OneDrive\Documentos\Embarcadero\Studio\Projects\unCadastro.dfm</Transaction>
+    <Transaction>2023/08/15 20:20:23.000.270,C:\Users\kreuz\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit3.pas=C:\Users\kreuz\OneDrive\Documentos\Embarcadero\Studio\Projects\unCadastro.pas</Transaction>
+    <Transaction>2023/08/15 20:22:39.000.340,=C:\Users\kreuz\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit4.pas</Transaction>
+    <Transaction>2023/08/15 20:22:48.000.070,C:\Users\kreuz\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit4.pas=C:\Users\kreuz\OneDrive\Documentos\Embarcadero\Studio\Projects\unTest.pas</Transaction>
+    <Transaction>2023/08/15 20:22:48.000.070,C:\Users\kreuz\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit4.dfm=C:\Users\kreuz\OneDrive\Documentos\Embarcadero\Studio\Projects\unTest.dfm</Transaction>
+    <Transaction>2023/08/29 19:39:30.000.961,=C:\Users\kreuz\OneDrive\Documentos\ProjetoCusto\Projects\Unit5.pas</Transaction>
+    <Transaction>2023/08/29 19:45:31.000.074,C:\Users\kreuz\OneDrive\Documentos\ProjetoCusto\Projects\unCadastroClient.pas=C:\Users\kreuz\OneDrive\Documentos\ProjetoCusto\Projects\Unit5.pas</Transaction>
+    <Transaction>2023/08/29 19:45:31.000.074,C:\Users\kreuz\OneDrive\Documentos\ProjetoCusto\Projects\unCadastroClient.dfm=C:\Users\kreuz\OneDrive\Documentos\ProjetoCusto\Projects\Unit5.dfm</Transaction>
+    <Transaction>2023/08/29 20:10:16.000.998,C:\Users\kreuz\OneDrive\Documentos\ProjetoCusto\Projects\unCadastroNota.dfm=C:\Users\kreuz\OneDrive\Documentos\ProjetoCusto\Projects\unCadastro.dfm</Transaction>
+    <Transaction>2023/08/29 20:10:16.000.998,C:\Users\kreuz\OneDrive\Documentos\ProjetoCusto\Projects\unCadastroNota.pas=C:\Users\kreuz\OneDrive\Documentos\ProjetoCusto\Projects\unCadastro.pas</Transaction>
+    <Transaction>2023/09/19 19:26:47.000.773,=C:\Users\kreuz\OneDrive\Documentos\ProjetoCusto\Projects\Unit1.pas</Transaction>
+    <Transaction>2023/09/19 19:28:17.000.990,C:\Users\kreuz\OneDrive\Documentos\ProjetoCusto\Projects\unCadastro.pas=C:\Users\kreuz\OneDrive\Documentos\ProjetoCusto\Projects\Unit1.pas</Transaction>
+    <Transaction>2023/09/19 19:28:17.000.990,C:\Users\kreuz\OneDrive\Documentos\ProjetoCusto\Projects\unCadastro.dfm=C:\Users\kreuz\OneDrive\Documentos\ProjetoCusto\Projects\Unit1.dfm</Transaction>
+    <Transaction>2023/09/19 19:30:51.000.569,=C:\Users\kreuz\OneDrive\Documentos\ProjetoCusto\Projects\Unit1.pas</Transaction>
+    <Transaction>2023/09/19 19:36:55.000.178,C:\Users\kreuz\OneDrive\Documentos\ProjetoCusto\Projects\unPesquisaCliente.dfm=C:\Users\kreuz\OneDrive\Documentos\ProjetoCusto\Projects\Unit1.dfm</Transaction>
+    <Transaction>2023/09/19 19:36:55.000.178,C:\Users\kreuz\OneDrive\Documentos\ProjetoCusto\Projects\unPesquisaCliente.pas=C:\Users\kreuz\OneDrive\Documentos\ProjetoCusto\Projects\Unit1.pas</Transaction>
+    <Transaction>2023/09/19 20:29:37.000.503,C:\Users\kreuz\OneDrive\Documentos\ProjetoCusto\Projects\unCadastroFornecedor.dfm=C:\Users\kreuz\OneDrive\Documentos\ProjetoCusto\Projects\unCadastro.dfm</Transaction>
+    <Transaction>2023/09/19 20:29:37.000.503,C:\Users\kreuz\OneDrive\Documentos\ProjetoCusto\Projects\unCadastroFornecedor.pas=C:\Users\kreuz\OneDrive\Documentos\ProjetoCusto\Projects\unCadastro.pas</Transaction>
+    <Transaction>2023/09/19 20:38:41.000.661,=C:\Users\kreuz\OneDrive\Documentos\ProjetoCusto\Projects\Unit1.pas</Transaction>
+    <Transaction>2023/09/19 20:38:56.000.050,C:\Users\kreuz\OneDrive\Documentos\ProjetoCusto\Projects\unRelatorioNotas.pas=C:\Users\kreuz\OneDrive\Documentos\ProjetoCusto\Projects\Unit1.pas</Transaction>
+    <Transaction>2023/09/19 20:38:56.000.050,C:\Users\kreuz\OneDrive\Documentos\ProjetoCusto\Projects\unRelatorioNotas.dfm=C:\Users\kreuz\OneDrive\Documentos\ProjetoCusto\Projects\Unit1.dfm</Transaction>
+    <Transaction>2023/09/19 20:39:28.000.148,=C:\Users\kreuz\OneDrive\Documentos\ProjetoCusto\Projects\Unit1.pas</Transaction>
+    <Transaction>2023/09/19 20:39:39.000.563,C:\Users\kreuz\OneDrive\Documentos\ProjetoCusto\Projects\unRelatorioCadastros.dfm=C:\Users\kreuz\OneDrive\Documentos\ProjetoCusto\Projects\Unit1.dfm</Transaction>
+    <Transaction>2023/09/19 20:39:39.000.563,C:\Users\kreuz\OneDrive\Documentos\ProjetoCusto\Projects\unRelatorioCadastros.pas=C:\Users\kreuz\OneDrive\Documentos\ProjetoCusto\Projects\Unit1.pas</Transaction>
+    <Transaction>2023/10/03 21:38:04.000.544,=C:\Users\kreuz\OneDrive\Documentos\ProjetoCusto\Projects\Unit1.pas</Transaction>
+    <Transaction>2023/10/03 21:38:33.000.127,C:\Users\kreuz\OneDrive\Documentos\ProjetoCusto\Projects\Unit1.dfm=C:\Users\kreuz\OneDrive\Documentos\ProjetoCusto\Projects\unMenuRelatorio.dfm</Transaction>
+    <Transaction>2023/10/03 21:38:33.000.127,C:\Users\kreuz\OneDrive\Documentos\ProjetoCusto\Projects\Unit1.pas=C:\Users\kreuz\OneDrive\Documentos\ProjetoCusto\Projects\unMenuRelatorio.pas</Transaction>
+  </Transactions>
+	<ProjectSortOrder AutoSort="0" SortType="0">
+    <File Path="unCadastroClient.pas"/>
+    <File Path="unCadastroClient.dfm"/>
+    <File Path="unCadastroNota.pas"/>
+    <File Path="unCadastroNota.dfm"/>
+    <File Path="unCaixa.pas"/>
+    <File Path="unCaixa.dfm"/>
+    <File Path="unConnection.pas"/>
+    <File Path="unConnection.dfm"/>
+    <File Path="unPrincipal.pas"/>
+    <File Path="unPrincipal.dfm"/>
+    <File Path="unTest.pas"/>
+    <File Path="unTest.dfm"/>
+    <File Path="unPesquisaCliente.pas"/>
+    <File Path="unPesquisaCliente.dfm"/>
+    <File Path="unCadastroFornecedor.pas"/>
+    <File Path="unCadastroFornecedor.dfm"/>
+    <File Path="unRelatorioNotas.pas"/>
+    <File Path="unRelatorioNotas.dfm"/>
+    <File Path="unRelatorioCadastros.pas"/>
+    <File Path="unRelatorioCadastros.dfm"/>
+    <File Path="unMenuRelatorio.pas"/>
+    <File Path="unMenuRelatorio.dfm"/>
+  </ProjectSortOrder>
+</BorlandProject>

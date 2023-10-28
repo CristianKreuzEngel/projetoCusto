@@ -1,0 +1,169 @@
+object formCadastroCliente: TformCadastroCliente
+  Left = 0
+  Top = 0
+  Caption = 'formCadastroCliente'
+  ClientHeight = 715
+  ClientWidth = 986
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -12
+  Font.Name = 'Segoe UI'
+  Font.Style = []
+  TextHeight = 15
+  object pnBackground: TPanel
+    Left = 8
+    Top = 2
+    Width = 977
+    Height = 705
+    Enabled = False
+    TabOrder = 0
+    object Label1: TLabel
+      Left = 166
+      Top = 107
+      Width = 180
+      Height = 28
+      Caption = 'NOME:'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = 0
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label2: TLabel
+      Left = 190
+      Top = 146
+      Width = 180
+      Height = 28
+      Caption = 'CPF:'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = 0
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label3: TLabel
+      Left = 78
+      Top = 191
+      Width = 180
+      Height = 28
+      Caption = 'DATA NASCIMENTO:'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = 0
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label4: TLabel
+      Left = 160
+      Top = 27
+      Width = 210
+      Height = 28
+      Caption = 'CADASTRO DO CLIENTE'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = 0
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label5: TLabel
+      Left = 78
+      Top = 61
+      Width = 193
+      Height = 28
+      Caption = 'C'#211'DIGO DO CLIENTE: '
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = 0
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+    end
+    object edtNome: TDBEdit
+      Left = 232
+      Top = 104
+      Width = 305
+      Height = 36
+      DataField = 'NOME_CLIENTE'
+      DataSource = dsCadastroCliente
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = 0
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 0
+    end
+    object edtDataNascimento: TDBEdit
+      Left = 232
+      Top = 188
+      Width = 305
+      Height = 36
+      DataField = 'DATA_NASCIMENTO'
+      DataSource = dsCadastroCliente
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = 0
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 1
+    end
+    object edtCPF: TDBEdit
+      Left = 232
+      Top = 146
+      Width = 305
+      Height = 36
+      DataField = 'CPF_CLIENTE'
+      DataSource = dsCadastroCliente
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = 0
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 2
+    end
+    object DBNavigator1: TDBNavigator
+      Left = 120
+      Top = 304
+      Width = 670
+      Height = 25
+      DataSource = dsCadastroCliente
+      TabOrder = 3
+    end
+    object DBEdit1: TDBEdit
+      Left = 232
+      Top = 61
+      Width = 305
+      Height = 36
+      DataField = 'ID_CLIENTE'
+      DataSource = dsCadastroCliente
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = 0
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 4
+    end
+  end
+  object dsCadastroCliente: TDataSource
+    DataSet = qryCadastroCliente
+    Left = 912
+    Top = 96
+  end
+  object qryCadastroCliente: TFDQuery
+    Active = True
+    OnNewRecord = qryCadastroClienteNewRecord
+    Connection = DataModule1.FDConnection1
+    SQL.Strings = (
+      'SELECT * FROM CLIENTE')
+    Left = 912
+    Top = 24
+  end
+end

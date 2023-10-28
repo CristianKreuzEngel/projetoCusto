@@ -1,0 +1,133 @@
+unit unCaixa;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
+  System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ComCtrls, Vcl.WinXPickers,
+  Vcl.StdCtrls, Vcl.Mask, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
+  FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, Data.DB,
+  FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.ExtCtrls, Vcl.DBCtrls,
+  Vcl.Grids, Vcl.DBGrids, Vcl.Imaging.pngimage;
+
+type
+  TformMovimentos = class(TForm)
+    dtOntem: TDateTimePicker;
+    qryMovimentacao: TFDQuery;
+    dsMovimentacao: TDataSource;
+    dtHoje: TDateTimePicker;
+    btnPesquisar: TButton;
+    edtTipo: TDBComboBox;
+    btnNovo: TImage;
+    btnSalvar: TImage;
+    btnCancelar: TImage;
+    Label7: TLabel;
+    Label8: TLabel;
+    Label6: TLabel;
+    Label1: TLabel;
+    edtDesc: TDBEdit;
+    dtMovimentacao: TDateTimePicker;
+    edtValor: TDBEdit;
+    Label2: TLabel;
+    Label3: TLabel;
+    Label5: TLabel;
+    DBGrid1: TDBGrid;
+    procedure btnNovoClick(Sender: TObject);
+    procedure btnSalvarClick(Sender: TObject);
+    procedure qryMovimentacaoNewRecord(DataSet: TDataSet);
+    procedure btnCancelarClick(Sender: TObject);
+    procedure dtMovimentacaoChange(Sender: TObject);
+    procedure dsMovimentacaoDataChange(Sender: TObject; Field: TField);
+    procedure FormShow(Sender: TObject);
+    procedure btnPesquisarClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  formMovimentos: TformMovimentos;
+
+implementation
+
+{$R *.dfm}
+
+uses unConnection;
+
+procedure TformMovimentos.btnCancelarClick(Sender: TObject);
+begin
+  qryMovimentacao.Cancel;
+  edtTipo.Enabled := false;
+  edtDesc.Enabled := false;
+  edtValor.Enabled := false;
+  dtMovimentacao.Enabled := false;
+end;
+
+procedure TformMovimentos.btnNovoClick(Sender: TObject);
+begin
+  edtTipo.Enabled := true;
+  edtDesc.Enabled := true;
+  edtValor.Enabled := true;
+  dtMovimentacao.Enabled := true;
+  qryMovimentacao.Insert;
+end;
+
+procedure TformMovimentos.btnPesquisarClick(Sender: TObject);
+begin
+  qryMovimentacao.Close;
+  qryMovimentacao.SQL.Text := 'Select * from movimentacao' +
+    ' where data_movimentacao >= :dtOntem' +
+    ' and data_movimentacao <= :dataHoje' +
+    ' order by data_movimentacao desc';
+
+  qryMovimentacao.ParamByName('dtOntem').Value := dtOntem.DateTime;
+  qryMovimentacao.ParamByName('dataHoje').Value := dtHoje.DateTime;
+  qryMovimentacao.Open;
+end;
+
+procedure TformMovimentos.btnSalvarClick(Sender: TObject);
+begin
+  qryMovimentacao.Post;
+  edtTipo.Enabled := false;
+  edtDesc.Enabled := false;
+  edtValor.Enabled := false;
+  dtMovimentacao.Enabled := false;
+  qryMovimentacao.Active := false;
+  qryMovimentacao.Active := true;
+end;
+
+procedure TformMovimentos.dsMovimentacaoDataChange(Sender: TObject;
+  Field: TField);
+begin
+  if qryMovimentacao.Active and not(qryMovimentacao.State in dsEditModes) then
+    dtMovimentacao.DateTime := qryMovimentacao.FieldByName('DATA_MOVIMENTACAO')
+      .AsDateTime;
+end;
+
+procedure TformMovimentos.dtMovimentacaoChange(Sender: TObject);
+begin
+  if qryMovimentacao.State = dsBrowse then
+    qryMovimentacao.Edit;
+
+  qryMovimentacao.FieldByName('DATA_MOVIMENTACAO').AsDateTime :=
+    dtMovimentacao.DateTime;
+
+end;
+
+procedure TformMovimentos.FormShow(Sender: TObject);
+begin
+  dtOntem.DateTime := date - 1;
+  dtHoje.DateTime := date;
+
+  DBGrid1.SetFocus;
+end;
+
+procedure TformMovimentos.qryMovimentacaoNewRecord(DataSet: TDataSet);
+begin
+  qryMovimentacao.FieldByName('ID').Value := 0;
+end;
+
+end.
