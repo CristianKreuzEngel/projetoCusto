@@ -1,0 +1,30 @@
+object formMenuRelatorio: TformMenuRelatorio
+  Left = 0
+  Top = 0
+  Caption = 'formMenuRelatorio'
+  ClientHeight = 635
+  ClientWidth = 893
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -12
+  Font.Name = 'Segoe UI'
+  Font.Style = []
+  TextHeight = 15
+  object Label1: TLabel
+    Left = 264
+    Top = 88
+    Width = 138
+    Height = 15
+    Caption = 'QUAL TIPO DE RELAT'#211'RIO'
+  end
+  object FDQuery1: TFDQuery
+    Connection = DataModule1.FDConnection1
+    Left = 800
+    Top = 48
+  end
+  object DataSource1: TDataSource
+    Left = 808
+    Top = 112
+  end
+end

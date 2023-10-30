@@ -61,7 +61,7 @@ implementation
 
 uses unCadastroClient, unCadastroNota, unCadastroFornecedor, unCaixa,
   unConnection, unPesquisaCliente, unRelatorioCadastros, unRelatorioNotas,
-  unTest;
+  unTest, unMenuRelatorioCadastro;
 
 procedure TfmMainMenu.Clientes1Click(Sender: TObject);
 begin
@@ -120,7 +120,7 @@ begin
     //Mostarando opções
     pnOption.Visible:= true;
     RelatorioCliente.Visible := true;
-    lbOption1.Caption := 'RELATÓRIO CLIENTES';
+    lbOption1.Caption := 'RELATÓRIO CADASTRO';
     imgRelatorioNota.Visible := true;
     lbOption2.Caption := 'RELATÓRIO NOTAS';
 
@@ -148,7 +148,7 @@ end;
 
 procedure TfmMainMenu.RelatorioClienteClick(Sender: TObject);
 begin
-  formRelatorioCadastro.ShowModal;
+  formMenuRelatorio.ShowModal;
 end;
 
 end.

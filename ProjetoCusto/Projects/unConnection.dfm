@@ -1,13 +1,12 @@
 object DataModule1: TDataModule1
   OnCreate = DataModuleCreate
-  Height = 750
-  Width = 1000
-  PixelsPerInch = 120
+  Height = 600
+  Width = 800
   object FDConnection1: TFDConnection
     Params.Strings = (
       
-        'Database=C:\Users\kreuz\OneDrive\Documentos\ProjetoCusto\Banco\b' +
-        'ancoHorus.FDB'
+        'Database=C:\Users\kreuz\OneDrive\Documentos\Repositorios\projeto' +
+        'Custo\ProjetoCusto\Banco\bancoHorus.FDB'
       'User_Name=sysdba'
       'Password=abacate'
       'Protocol=TCPIP'
@@ -16,12 +15,14 @@ object DataModule1: TDataModule1
       'DriverID=FB')
     Connected = True
     LoginPrompt = False
-    Left = 280
-    Top = 72
+    Left = 224
+    Top = 58
   end
   object FDQueryNovoCodigo: TFDQuery
     Connection = FDConnection1
-    Left = 688
-    Top = 80
+    SQL.Strings = (
+      'select * from cliente')
+    Left = 550
+    Top = 64
   end
 end

@@ -139,8 +139,16 @@
             <Form>formRelatorioCadastro</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="unMenuRelatorio.pas">
+        <DCCReference Include="unMenuRelatorioCadastro.pas">
             <Form>formMenuRelatorio</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="unRelatorioVendas.pas">
+            <Form>formRelatorioVendas</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="unRelatorioFornecedor.pas">
+            <Form>formRelatorioFornecedor</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Base">

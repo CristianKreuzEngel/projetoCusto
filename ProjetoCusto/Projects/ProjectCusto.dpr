@@ -12,7 +12,9 @@ uses
   unPesquisaCliente in 'unPesquisaCliente.pas' {formPesquisaCliente},
   unRelatorioNotas in 'unRelatorioNotas.pas' {formRelatorioNota},
   unRelatorioCadastros in 'unRelatorioCadastros.pas' {formRelatorioCadastro},
-  unMenuRelatorio in 'unMenuRelatorio.pas' {formMenuRelatorio};
+  unMenuRelatorioCadastro in 'unMenuRelatorioCadastro.pas' {formMenuRelatorio},
+  unRelatorioVendas in 'unRelatorioVendas.pas' {formRelatorioVendas},
+  unRelatorioFornecedor in 'unRelatorioFornecedor.pas' {formRelatorioFornecedor};
 
 {$R *.res}
 
@@ -30,5 +32,7 @@ begin
   Application.CreateForm(TformRelatorioNota, formRelatorioNota);
   Application.CreateForm(TformRelatorioCadastro, formRelatorioCadastro);
   Application.CreateForm(TformMenuRelatorio, formMenuRelatorio);
+  Application.CreateForm(TformRelatorioVendas, formRelatorioVendas);
+  Application.CreateForm(TformRelatorioFornecedor, formRelatorioFornecedor);
   Application.Run;
 end.

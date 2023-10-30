@@ -302,8 +302,8 @@ object fmMainMenu: TfmMainMenu
   object lbMovimento: TLabel
     Left = 285
     Top = 298
-    Width = 117
-    Height = 28
+    Width = 93
+    Height = 21
     Caption = 'MOVIMENTO'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -778,8 +778,8 @@ object fmMainMenu: TfmMainMenu
   object lbCadastro: TLabel
     Left = 443
     Top = 298
-    Width = 100
-    Height = 28
+    Width = 80
+    Height = 21
     Caption = 'CADASTRO'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -1253,8 +1253,8 @@ object fmMainMenu: TfmMainMenu
   object lbRelatorio: TLabel
     Left = 595
     Top = 298
-    Width = 111
-    Height = 28
+    Width = 89
+    Height = 21
     Caption = 'RELAT'#211'RIOS'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -1676,8 +1676,8 @@ object fmMainMenu: TfmMainMenu
     object lbOption1: TLabel
       Left = 202
       Top = 175
-      Width = 5
-      Height = 28
+      Width = 4
+      Height = 21
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = 0
@@ -2129,8 +2129,8 @@ object fmMainMenu: TfmMainMenu
     object lbOption2: TLabel
       Left = 510
       Top = 175
-      Width = 5
-      Height = 28
+      Width = 4
+      Height = 21
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = 0

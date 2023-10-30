@@ -1,0 +1,80 @@
+unit unMenuRelatorioCadastro;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
+  System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
+  FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, Data.DB,
+  FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.StdCtrls, Vcl.ExtCtrls,
+  Vcl.ComCtrls;
+
+type
+  TformMenuRelatorio = class(TForm)
+    FDQuery1: TFDQuery;
+    DataSource1: TDataSource;
+    Label1: TLabel;
+    btnGerar: TButton;
+    dtHoje: TDateTimePicker;
+    cbTipoRel: TComboBox;
+    Label3: TLabel;
+    ComboBox2: TComboBox;
+    Label4: TLabel;
+    dtOntem: TDateTimePicker;
+    Label2: TLabel;
+    procedure FormShow(Sender: TObject);
+    procedure btnGerarClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  formMenuRelatorio: TformMenuRelatorio;
+
+implementation
+
+{$R *.dfm}
+
+uses unConnection, unRelatorioCadastros, unRelatorioVendas;
+
+procedure TformMenuRelatorio.btnGerarClick(Sender: TObject);
+begin
+  if (cbTipoRel.ItemIndex = 0) then
+  begin
+    formRelatorioCadastro.RLReport1.Preview;
+  end;
+  if (cbTipoRel.ItemIndex = 1) then
+  begin
+    formRelatorioCadastro.RLReport1.Preview;
+  end;
+
+  if (cbTipoRel.ItemIndex = 2) then
+  begin
+    dtHoje.Enabled := true;
+    dtOntem.Enabled := true;
+    formRelatorioVendas.queryVendas.Close;
+    formRelatorioVendas.queryVendas.SQL.Text := 'Select * from movimentacao' +
+      ' where data_movimentacao >= :dtOntem' +
+      ' and data_movimentacao <= :dataHoje and tipo =' + 'E' +
+      ' order by data_movimentacao asc';
+
+    formRelatorioVendas.queryVendas.ParamByName('dtOntem').Value :=
+      dtOntem.DateTime;
+    formRelatorioVendas.queryVendas.ParamByName('dataHoje').Value :=
+      dtHoje.DateTime;
+    formRelatorioVendas.queryVendas.Open;
+    formRelatorioVendas.RLReport1.Preview;
+  end;
+end;
+
+procedure TformMenuRelatorio.FormShow(Sender: TObject);
+begin
+  dtOntem.DateTime := date - 1;
+  dtHoje.DateTime := date;
+end;
+
+end.
