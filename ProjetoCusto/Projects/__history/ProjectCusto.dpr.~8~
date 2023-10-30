@@ -6,7 +6,7 @@ uses
   unConnection in 'unConnection.pas' {DataModule1: TDataModule},
   unCaixa in 'unCaixa.pas' {formMovimentos},
   unCadastroNota in 'unCadastroNota.pas' {formCadastroNotaP},
-  unMenuMovimento in 'unMenuMovimento.pas' {formMenuRelatorioMovi},
+  unTest in 'unTest.pas' {Form4},
   unCadastroClient in 'unCadastroClient.pas' {formCadastroCliente},
   unCadastroFornecedor in 'unCadastroFornecedor.pas' {formCadastroFornecedor},
   unPesquisaCliente in 'unPesquisaCliente.pas' {formPesquisaCliente},
@@ -14,8 +14,7 @@ uses
   unRelatorioCadastros in 'unRelatorioCadastros.pas' {formRelatorioCadastro},
   unMenuRelatorioCadastro in 'unMenuRelatorioCadastro.pas' {formMenuRelatorio},
   unRelatorioVendas in 'unRelatorioVendas.pas' {formRelatorioVendas},
-  unRelatorioFornecedor in 'unRelatorioFornecedor.pas' {formRelatorioFornecedor},
-  unRelatorioCompras in 'unRelatorioCompras.pas' {formRelatorioCompras};
+  unRelatorioFornecedor in 'unRelatorioFornecedor.pas' {formRelatorioFornecedor};
 
 {$R *.res}
 
@@ -26,7 +25,7 @@ begin
   Application.CreateForm(TDataModule1, DataModule1);
   Application.CreateForm(TformMovimentos, formMovimentos);
   Application.CreateForm(TformCadastroNotaP, formCadastroNotaP);
-  Application.CreateForm(TformMenuRelatorioMovi, formMenuRelatorioMovi);
+  Application.CreateForm(TForm4, Form4);
   Application.CreateForm(TformCadastroCliente, formCadastroCliente);
   Application.CreateForm(TformCadastroFornecedor, formCadastroFornecedor);
   Application.CreateForm(TformPesquisaCliente, formPesquisaCliente);
@@ -35,6 +34,5 @@ begin
   Application.CreateForm(TformMenuRelatorio, formMenuRelatorio);
   Application.CreateForm(TformRelatorioVendas, formRelatorioVendas);
   Application.CreateForm(TformRelatorioFornecedor, formRelatorioFornecedor);
-  Application.CreateForm(TformRelatorioCompras, formRelatorioCompras);
   Application.Run;
 end.

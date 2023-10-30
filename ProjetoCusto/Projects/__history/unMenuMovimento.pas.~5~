@@ -13,7 +13,7 @@ uses
   Vcl.ExtCtrls, Vcl.DBCtrls, Vcl.StdCtrls, Vcl.Mask, Vcl.ComCtrls;
 
 type
-  TformMenuRelatorioMovi = class(TForm)
+  TForm4 = class(TForm)
     btnGerar: TButton;
     cbTipoRel: TComboBox;
     cbOrdenar: TComboBox;
@@ -31,7 +31,7 @@ type
   end;
 
 var
-  formMenuRelatorioMovi: TformMenuRelatorioMovi;
+  Form4: TForm4;
 
 implementation
 
@@ -39,7 +39,7 @@ implementation
 
 uses unRelatorioCompras, unRelatorioVendas;
 
-procedure TformMenuRelatorioMovi.btnGerarClick(Sender: TObject);
+procedure TForm4.btnGerarClick(Sender: TObject);
 begin
   if (cbTipoRel.ItemIndex = 0) then
   begin

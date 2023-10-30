@@ -1,7 +1,7 @@
-object formMenuRelatorioMovi: TformMenuRelatorioMovi
+object Form4: TForm4
   Left = 0
   Top = 0
-  Caption = 'formMenuRelatorioMovi'
+  Caption = 'Form4'
   ClientHeight = 646
   ClientWidth = 949
   Color = clBtnFace

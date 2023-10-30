@@ -60,8 +60,8 @@ implementation
 {$R *.dfm}
 
 uses unCadastroClient, unCadastroNota, unCadastroFornecedor, unCaixa,
-  unConnection, unPesquisaCliente, unRelatorioCadastros, unRelatorioNotas, unMenuRelatorioCadastro,
-  unMenuMovimento;
+  unConnection, unPesquisaCliente, unRelatorioCadastros, unRelatorioNotas,
+  unTest, unMenuRelatorioCadastro;
 
 procedure TfmMainMenu.Clientes1Click(Sender: TObject);
 begin
@@ -133,7 +133,7 @@ end;
 
 procedure TfmMainMenu.imgRelatorioNotaClick(Sender: TObject);
 begin
-  formMenuRelatorioMovi.ShowModal;
+  formRelatorioNota.ShowModal;
 end;
 
 procedure TfmMainMenu.cadastrarClienteClick(Sender: TObject);

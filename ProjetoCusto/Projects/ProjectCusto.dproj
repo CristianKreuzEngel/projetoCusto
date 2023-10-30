@@ -115,8 +115,8 @@
             <Form>formCadastroNotaP</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="unTest.pas">
-            <Form>Form4</Form>
+        <DCCReference Include="unMenuMovimento.pas">
+            <Form>formMenuRelatorioMovi</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="unCadastroClient.pas">
@@ -149,6 +149,10 @@
         </DCCReference>
         <DCCReference Include="unRelatorioFornecedor.pas">
             <Form>formRelatorioFornecedor</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="unRelatorioCompras.pas">
+            <Form>formRelatorioCompras</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Base">
