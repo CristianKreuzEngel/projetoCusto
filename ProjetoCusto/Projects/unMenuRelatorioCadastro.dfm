@@ -64,15 +64,17 @@ object formMenuRelatorio: TformMenuRelatorio
     Top = 133
     Width = 145
     Height = 23
+    ItemIndex = 0
     TabOrder = 2
-    Text = '1 - Listar clientes'
+    Text = '1 - Listar Clientes'
     OnChange = cbTipoRelChange
     Items.Strings = (
-      '1 - Listar clientes'
+      '1 - Listar Clientes'
       '2 - Listar Fornecedores'
-      '3 - Listar notas')
+      '3 - Listar Vendas'
+      '4 - Listar Compras')
   end
-  object ComboBox2: TComboBox
+  object cbOrdenar: TComboBox
     Left = 344
     Top = 162
     Width = 145

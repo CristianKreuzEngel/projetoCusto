@@ -20,7 +20,7 @@ type
     dtHoje: TDateTimePicker;
     cbTipoRel: TComboBox;
     Label3: TLabel;
-    ComboBox2: TComboBox;
+    cbOrdenar: TComboBox;
     Label4: TLabel;
     dtOntem: TDateTimePicker;
     Label2: TLabel;
@@ -42,7 +42,7 @@ implementation
 {$R *.dfm}
 
 uses unConnection, unRelatorioCadastros, unRelatorioVendas,
-  unRelatorioFornecedor;
+  unRelatorioFornecedor, unRelatorioCompras;
 
 procedure TformMenuRelatorio.btnGerarClick(Sender: TObject);
 begin
@@ -77,11 +77,29 @@ begin
     // formRelatorioVendas.queryVendas.Open;
     formRelatorioVendas.RLReport1.Preview;
   end;
+  if (cbTipoRel.ItemIndex = 3) then
+  begin
+    dtHoje.Enabled := true;
+    tipo := 'E';
+    dtOntem.Enabled := true;
+    // formRelatorioVendas.queryVendas.Close;
+    // formRelatorioVendas.queryVendas.SQL.Text := 'Select * from movimentacao' +
+    // ' where data_movimentacao >= :dtOntem' +
+    // ' and data_movimentacao <= :dataHoje' +
+    // ' order by data_movimentacao asc';
+    //
+    // formRelatorioVendas.queryVendas.ParamByName('dtOntem').Value :=
+    // dtOntem.DateTime;
+    // formRelatorioVendas.queryVendas.ParamByName('dataHoje').Value :=
+    // dtHoje.DateTime;
+    // formRelatorioVendas.queryVendas.Open;
+    formRelatorioCompras.RLReport1.Preview;
+  end;
 end;
 
 procedure TformMenuRelatorio.cbTipoRelChange(Sender: TObject);
 begin
-  if (cbTipoRel.ItemIndex = 2) then
+  if (cbTipoRel.ItemIndex = 2) or (cbTipoRel.ItemIndex = 3) then
   begin
     dtHoje.Enabled := true;
     dtOntem.Enabled := true;

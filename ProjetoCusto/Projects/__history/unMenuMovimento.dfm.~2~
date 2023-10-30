@@ -1,0 +1,27 @@
+object Form4: TForm4
+  Left = 0
+  Top = 0
+  Caption = 'Form4'
+  ClientHeight = 646
+  ClientWidth = 949
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -12
+  Font.Name = 'Segoe UI'
+  Font.Style = []
+  TextHeight = 15
+  object FDQuery1: TFDQuery
+    Connection = DataModule1.FDConnection1
+    SQL.Strings = (
+      'SELECT * FROM cliente'
+      '')
+    Left = 880
+    Top = 80
+  end
+  object DataSource1: TDataSource
+    DataSet = FDQuery1
+    Left = 880
+    Top = 24
+  end
+end
