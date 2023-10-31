@@ -7,7 +7,7 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, RLReport, FireDAC.Stan.Intf,
   FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
   FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
-  Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client;
+  Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client, RLFilters, RLPDFFilter;
 
 type
   TformRelatorioVendas = class(TForm)
@@ -33,10 +33,15 @@ type
     RLSystemInfo2: TRLSystemInfo;
     RLSystemInfo3: TRLSystemInfo;
     RLLabel6: TRLLabel;
-    queryVendas: TFDQuery;
+    qryVendas: TFDQuery;
     DataSource1: TDataSource;
     RLLabel8: TRLLabel;
     RLDBText5: TRLDBText;
+    RLDraw4: TRLDraw;
+    RLPDFFilter1: TRLPDFFilter;
+    RLBand5: TRLBand;
+    RLLabel9: TRLLabel;
+    RLDBResult1: TRLDBResult;
   private
     { Private declarations }
   public

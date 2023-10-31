@@ -62,11 +62,11 @@ object formMenuRelatorio: TformMenuRelatorio
   object cbTipoRel: TComboBox
     Left = 344
     Top = 133
-    Width = 145
+    Width = 228
     Height = 23
     ItemIndex = 0
     TabOrder = 2
-    Text = '1 - Listar Clientes'
+    Text = 'Selecione o tipo de relat'#243'rio'
     OnChange = cbTipoRelChange
     Items.Strings = (
       '1 - Listar Clientes'
@@ -77,9 +77,10 @@ object formMenuRelatorio: TformMenuRelatorio
   object cbOrdenar: TComboBox
     Left = 344
     Top = 162
-    Width = 145
+    Width = 228
     Height = 23
     TabOrder = 3
+    Text = 'Selecione o tipo de oredena'#231#227'o'
     Items.Strings = (
       'C'#243'digo'
       'Nome')

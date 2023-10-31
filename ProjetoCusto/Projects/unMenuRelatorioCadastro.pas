@@ -48,9 +48,22 @@ procedure TformMenuRelatorio.btnGerarClick(Sender: TObject);
 begin
   if (cbTipoRel.ItemIndex = 0) then
   begin
-    formRelatorioCadastro.RLReport1.Preview;
-    dtHoje.Enabled := false;
-    dtOntem.Enabled := false;
+    if (cbOrdenar.ItemIndex = 0) then
+    begin
+      formRelatorioCadastro.RLReport1.Preview;
+      dtHoje.Enabled := false;
+      dtOntem.Enabled := false;
+    end;
+    if (cbOrdenar.ItemIndex = 1) then
+    begin
+      formRelatorioCadastro.RLReport1.Preview;
+      dtHoje.Enabled := false;
+      dtOntem.Enabled := false;
+      formRelatorioCadastro.qryRelatorios.Close;
+      formRelatorioCadastro.qryRelatorios.Text := 'Select * from cliente order by data_movimentacao asc';
+      formRelatorioCadastro.qryRelatorios.Open;
+
+    end;
   end;
   if (cbTipoRel.ItemIndex = 1) then
   begin

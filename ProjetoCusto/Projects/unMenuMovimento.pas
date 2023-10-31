@@ -41,6 +41,7 @@ uses unRelatorioCompras, unRelatorioVendas;
 
 procedure TformMenuRelatorioMovi.btnGerarClick(Sender: TObject);
 begin
+
   if (cbTipoRel.ItemIndex = 0) then
   begin
     // formRelatorioVendas.queryVendas.Close;
@@ -72,6 +73,8 @@ begin
 
   if (cbTipoRel.ItemIndex = 2) then
   begin
+    formRelatorioVendas.qryVendas.Close;
+    formRelatorioVendas.qryVendas.Open;
     // formRelatorioVendas.queryVendas.Close;
     // formRelatorioVendas.queryVendas.SQL.Text := 'Select * from movimentacao' +
     // ' where data_movimentacao >= :dtOntem' +
@@ -87,6 +90,8 @@ begin
   end;
   if (cbTipoRel.ItemIndex = 3) then
   begin
+    formRelatorioCompras.qryCompras.Close;
+    formRelatorioCompras.qryCompras.Open;
     // formRelatorioVendas.queryVendas.Close;
     // formRelatorioVendas.queryVendas.SQL.Text := 'Select * from movimentacao' +
     // ' where data_movimentacao >= :dtOntem' +

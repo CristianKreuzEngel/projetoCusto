@@ -212,13 +212,13 @@ object formRelatorioCadastro: TformRelatorioCadastro
     end
   end
   object qryRelatorios: TFDQuery
-    Active = True
     Connection = DataModule1.FDConnection1
     SQL.Strings = (
       'Select *'
-      'from cliente')
-    Left = 208
-    Top = 8
+      'from cliente'
+      'order by id_cliente')
+    Left = 280
+    Top = 16
   end
   object dtRelatorio: TDataSource
     DataSet = qryRelatorios

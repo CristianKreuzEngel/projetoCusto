@@ -3,7 +3,7 @@ object formRelatorioVendas: TformRelatorioVendas
   Top = 0
   Caption = 'formRelatorioVendas'
   ClientHeight = 840
-  ClientWidth = 840
+  ClientWidth = 1071
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -58,7 +58,7 @@ object formRelatorioVendas: TformRelatorioVendas
       object RLDraw2: TRLDraw
         Left = -152
         Top = 31
-        Width = 894
+        Width = 1047
         Height = 26
         DrawKind = dkLine
       end
@@ -132,7 +132,7 @@ object formRelatorioVendas: TformRelatorioVendas
       Left = 38
       Top = 161
       Width = 718
-      Height = 48
+      Height = 135
       object RLDBText1: TRLDBText
         Left = 135
         Top = 23
@@ -179,10 +179,17 @@ object formRelatorioVendas: TformRelatorioVendas
         DataSource = DataSource1
         Text = ''
       end
+      object RLDraw4: TRLDraw
+        Left = -56
+        Top = 87
+        Width = 983
+        Height = 26
+        DrawKind = dkLine
+      end
     end
     object RLBand4: TRLBand
       Left = 38
-      Top = 209
+      Top = 360
       Width = 718
       Height = 64
       BandType = btFooter
@@ -198,19 +205,19 @@ object formRelatorioVendas: TformRelatorioVendas
       object RLDraw3: TRLDraw
         Left = -112
         Top = 6
-        Width = 894
+        Width = 1007
         Height = 26
         DrawKind = dkLine
       end
       object RLLabel5: TRLLabel
-        Left = 576
+        Left = 609
         Top = 38
         Width = 56
         Height = 19
         Caption = 'P'#225'gina'
       end
       object RLSystemInfo2: TRLSystemInfo
-        Left = 638
+        Left = 671
         Top = 38
         Width = 112
         Height = 19
@@ -218,7 +225,7 @@ object formRelatorioVendas: TformRelatorioVendas
         Text = ''
       end
       object RLSystemInfo3: TRLSystemInfo
-        Left = 664
+        Left = 713
         Top = 38
         Width = 142
         Height = 19
@@ -226,15 +233,44 @@ object formRelatorioVendas: TformRelatorioVendas
         Text = ''
       end
       object RLLabel6: TRLLabel
-        Left = 652
+        Left = 697
         Top = 38
         Width = 10
         Height = 19
         Caption = '/'
       end
     end
+    object RLBand5: TRLBand
+      Left = 38
+      Top = 296
+      Width = 718
+      Height = 64
+      BandType = btFooter
+      object RLLabel9: TRLLabel
+        Left = 606
+        Top = 29
+        Width = 65
+        Height = 19
+        Caption = 'TOTAL:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -17
+        Font.Name = 'Arial'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object RLDBResult1: TRLDBResult
+        Left = 677
+        Top = 29
+        Width = 155
+        Height = 19
+        DataSource = DataSource1
+        Info = riAverage
+        Text = ''
+      end
+    end
   end
-  object queryVendas: TFDQuery
+  object qryVendas: TFDQuery
     Active = True
     Connection = DataModule1.FDConnection1
     SQL.Strings = (
@@ -242,12 +278,20 @@ object formRelatorioVendas: TformRelatorioVendas
       'where tipo = '#39'E'#39
       'order by data_movimentacao asc'
       '')
-    Left = 794
-    Top = 327
+    Left = 498
+    Top = 535
   end
   object DataSource1: TDataSource
-    DataSet = queryVendas
-    Left = 792
-    Top = 272
+    DataSet = qryVendas
+    Left = 672
+    Top = 624
+  end
+  object RLPDFFilter1: TRLPDFFilter
+    DocumentInfo.Creator = 
+      'FortesReport Community Edition v4.0.0.1 \251 Copyright '#169' 1999-20' +
+      '21 Fortes Inform'#225'tica'
+    DisplayName = 'Documento PDF'
+    Left = 90
+    Top = 431
   end
 end
