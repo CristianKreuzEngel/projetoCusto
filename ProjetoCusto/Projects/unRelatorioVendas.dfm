@@ -64,7 +64,7 @@ object formRelatorioVendas: TformRelatorioVendas
       end
       object RLLabel7: TRLLabel
         Left = 38
-        Top = 6
+        Top = -1
         Width = 61
         Height = 19
         Caption = 'C'#243'digo'
@@ -77,7 +77,7 @@ object formRelatorioVendas: TformRelatorioVendas
       end
       object RLLabel2: TRLLabel
         Left = 417
-        Top = 6
+        Top = -1
         Width = 83
         Height = 19
         Caption = 'Descri'#231#227'o'
@@ -89,8 +89,8 @@ object formRelatorioVendas: TformRelatorioVendas
         ParentFont = False
       end
       object RLLabel3: TRLLabel
-        Left = 606
-        Top = 6
+        Left = 609
+        Top = -1
         Width = 46
         Height = 19
         Caption = 'Valor'
@@ -102,8 +102,8 @@ object formRelatorioVendas: TformRelatorioVendas
         ParentFont = False
       end
       object RLLabel4: TRLLabel
-        Left = 257
-        Top = 6
+        Left = 223
+        Top = -1
         Width = 138
         Height = 19
         Caption = 'Data Nascimento'
@@ -115,8 +115,8 @@ object formRelatorioVendas: TformRelatorioVendas
         ParentFont = False
       end
       object RLLabel8: TRLLabel
-        Left = 135
-        Top = 6
+        Left = 115
+        Top = -1
         Width = 103
         Height = 19
         Caption = 'C'#243'digo Nota'
@@ -134,7 +134,7 @@ object formRelatorioVendas: TformRelatorioVendas
       Width = 718
       Height = 135
       object RLDBText1: TRLDBText
-        Left = 135
+        Left = 115
         Top = 23
         Width = 74
         Height = 19
@@ -143,7 +143,7 @@ object formRelatorioVendas: TformRelatorioVendas
         Text = ''
       end
       object RLDBText2: TRLDBText
-        Left = 257
+        Left = 223
         Top = 23
         Width = 188
         Height = 19
@@ -161,8 +161,8 @@ object formRelatorioVendas: TformRelatorioVendas
         Text = ''
       end
       object RLDBText4: TRLDBText
-        Left = 606
-        Top = 23
+        Left = 609
+        Top = 31
         Width = 59
         Height = 19
         DataField = 'VALOR'
@@ -210,14 +210,14 @@ object formRelatorioVendas: TformRelatorioVendas
         DrawKind = dkLine
       end
       object RLLabel5: TRLLabel
-        Left = 609
+        Left = 577
         Top = 38
         Width = 56
         Height = 19
         Caption = 'P'#225'gina'
       end
       object RLSystemInfo2: TRLSystemInfo
-        Left = 671
+        Left = 639
         Top = 38
         Width = 112
         Height = 19
@@ -225,7 +225,7 @@ object formRelatorioVendas: TformRelatorioVendas
         Text = ''
       end
       object RLSystemInfo3: TRLSystemInfo
-        Left = 713
+        Left = 681
         Top = 38
         Width = 142
         Height = 19
@@ -233,7 +233,7 @@ object formRelatorioVendas: TformRelatorioVendas
         Text = ''
       end
       object RLLabel6: TRLLabel
-        Left = 697
+        Left = 665
         Top = 38
         Width = 10
         Height = 19
@@ -247,7 +247,7 @@ object formRelatorioVendas: TformRelatorioVendas
       Height = 64
       BandType = btFooter
       object RLLabel9: TRLLabel
-        Left = 606
+        Left = 502
         Top = 29
         Width = 65
         Height = 19
@@ -260,13 +260,15 @@ object formRelatorioVendas: TformRelatorioVendas
         ParentFont = False
       end
       object RLDBResult1: TRLDBResult
-        Left = 677
+        Left = 609
         Top = 29
-        Width = 155
+        Width = 55
         Height = 19
         DataSource = DataSource1
-        Info = riAverage
+        DisplayMask = 'R$#.0,00'
+        Info = riSum
         Text = ''
+        OnCompute = RLDBResult1Compute
       end
     end
   end
@@ -283,8 +285,8 @@ object formRelatorioVendas: TformRelatorioVendas
   end
   object DataSource1: TDataSource
     DataSet = qryVendas
-    Left = 672
-    Top = 624
+    Left = 576
+    Top = 528
   end
   object RLPDFFilter1: TRLPDFFilter
     DocumentInfo.Creator = 

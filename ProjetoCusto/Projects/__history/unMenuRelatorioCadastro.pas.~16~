@@ -1,0 +1,117 @@
+unit unMenuRelatorioCadastro;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
+  System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
+  FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, Data.DB,
+  FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.StdCtrls, Vcl.ExtCtrls,
+  Vcl.ComCtrls;
+
+type
+  TformMenuRelatorio = class(TForm)
+    FDQuery1: TFDQuery;
+    DataSource1: TDataSource;
+    Label1: TLabel;
+    btnGerar: TButton;
+    dtHoje: TDateTimePicker;
+    cbTipoRel: TComboBox;
+    Label3: TLabel;
+    cbOrdenar: TComboBox;
+    Label4: TLabel;
+    dtOntem: TDateTimePicker;
+    Label2: TLabel;
+    procedure FormShow(Sender: TObject);
+    procedure btnGerarClick(Sender: TObject);
+    procedure cbTipoRelChange(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  formMenuRelatorio: TformMenuRelatorio;
+  tipo: string;
+
+implementation
+
+{$R *.dfm}
+
+uses unConnection, unRelatorioCadastros, unRelatorioVendas,
+  unRelatorioFornecedor, unRelatorioCompras;
+
+procedure TformMenuRelatorio.btnGerarClick(Sender: TObject);
+begin
+  if (cbTipoRel.ItemIndex = 0) then
+  begin
+    if (cbOrdenar.ItemIndex = 0) then
+    begin
+      formRelatorioCadastro.qryRelatorios.Close;
+      formRelatorioCadastro.qryRelatorios.SQL.Text :=
+        'Select * from cliente order by ID_CLIENTE';
+      formRelatorioCadastro.qryRelatorios.Open;
+      formRelatorioCadastro.RLReport1.Preview;
+      dtHoje.Enabled := false;
+      dtOntem.Enabled := false;
+    end;
+    if (cbOrdenar.ItemIndex = 1) then
+    begin
+
+      dtHoje.Enabled := false;
+      dtOntem.Enabled := false;
+      formRelatorioCadastro.qryRelatorios.Close;
+      formRelatorioCadastro.qryRelatorios.SQL.Text :=
+        'Select * from cliente order by NOME_CLIENTE asc';
+      formRelatorioCadastro.qryRelatorios.Open;
+      formRelatorioCadastro.RLReport1.Preview;
+
+    end;
+  end;
+  if (cbTipoRel.ItemIndex = 1) then
+  begin
+    dtHoje.Enabled := false;
+    dtOntem.Enabled := false;
+    formRelatorioFornecedor.RLReport1.Preview;
+  end;
+
+  if (cbTipoRel.ItemIndex = 2) then
+  begin
+    dtHoje.Enabled := true;
+    tipo := 'E';
+    dtOntem.Enabled := true;
+    formRelatorioVendas.RLReport1.Preview;
+  end;
+  if (cbTipoRel.ItemIndex = 3) then
+  begin
+    dtHoje.Enabled := true;
+    tipo := 'E';
+    dtOntem.Enabled := true;
+    formRelatorioCompras.RLReport1.Preview;
+  end;
+end;
+
+procedure TformMenuRelatorio.cbTipoRelChange(Sender: TObject);
+begin
+  if (cbTipoRel.ItemIndex = 2) or (cbTipoRel.ItemIndex = 3) then
+  begin
+    dtHoje.Enabled := true;
+    dtOntem.Enabled := true;
+  end
+  else
+  begin
+    dtHoje.Enabled := false;
+    dtOntem.Enabled := false;
+  end;
+end;
+
+procedure TformMenuRelatorio.FormShow(Sender: TObject);
+begin
+  dtOntem.DateTime := date - 1;
+  dtHoje.DateTime := date;
+end;
+
+end.

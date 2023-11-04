@@ -16,7 +16,8 @@ uses
   unRelatorioVendas in 'unRelatorioVendas.pas' {formRelatorioVendas},
   unRelatorioFornecedor in 'unRelatorioFornecedor.pas' {formRelatorioFornecedor},
   unRelatorioCompras in 'unRelatorioCompras.pas' {formRelatorioCompras},
-  unRelatorioSemanal in 'unRelatorioSemanal.pas' {Form1};
+  unRelatorioSemanal in 'unRelatorioSemanal.pas' {formRelatorioSemanal},
+  unRelatorioNotaF in 'unRelatorioNotaF.pas' {formRelatorioNotas};
 
 {$R *.res}
 
@@ -37,6 +38,7 @@ begin
   Application.CreateForm(TformRelatorioVendas, formRelatorioVendas);
   Application.CreateForm(TformRelatorioFornecedor, formRelatorioFornecedor);
   Application.CreateForm(TformRelatorioCompras, formRelatorioCompras);
-  Application.CreateForm(TForm1, Form1);
+  Application.CreateForm(TformRelatorioSemanal, formRelatorioSemanal);
+  Application.CreateForm(TformRelatorioNotas, formRelatorioNotas);
   Application.Run;
 end.

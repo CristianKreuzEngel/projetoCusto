@@ -42,6 +42,8 @@ type
     RLBand5: TRLBand;
     RLLabel9: TRLLabel;
     RLDBResult1: TRLDBResult;
+    procedure RLDBResult1Compute(Sender: TObject; var Value: Variant;
+      var AText: string; var ComputeIt: Boolean);
   private
     { Private declarations }
   public
@@ -56,5 +58,11 @@ implementation
 {$R *.dfm}
 
 uses unConnection;
+
+procedure TformRelatorioVendas.RLDBResult1Compute(Sender: TObject;
+  var Value: Variant; var AText: string; var ComputeIt: Boolean);
+begin
+     Value:= qryVendas.FieldByName('valor').AsFloat;
+end;
 
 end.

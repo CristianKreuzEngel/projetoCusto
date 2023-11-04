@@ -9,12 +9,10 @@ uses
   FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
   FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, Data.DB,
   FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.StdCtrls, Vcl.ExtCtrls,
-  Vcl.ComCtrls;
+  Vcl.ComCtrls, Vcl.Mask, Vcl.DBCtrls;
 
 type
   TformMenuRelatorio = class(TForm)
-    FDQuery1: TFDQuery;
-    DataSource1: TDataSource;
     Label1: TLabel;
     btnGerar: TButton;
     dtHoje: TDateTimePicker;
@@ -24,9 +22,18 @@ type
     Label4: TLabel;
     dtOntem: TDateTimePicker;
     Label2: TLabel;
+    cbOrdenar2: TComboBox;
+    cbTipo: TComboBox;
+    lbTipo: TLabel;
+    btnPesquisar: TButton;
+    Label5: TLabel;
+    edtCodcliente: TDBEdit;
+    CheckBox1: TCheckBox;
     procedure FormShow(Sender: TObject);
     procedure btnGerarClick(Sender: TObject);
     procedure cbTipoRelChange(Sender: TObject);
+    procedure btnPesquisarClick(Sender: TObject);
+    procedure CheckBox1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -35,14 +42,14 @@ type
 
 var
   formMenuRelatorio: TformMenuRelatorio;
-  tipo: string;
 
 implementation
 
 {$R *.dfm}
 
 uses unConnection, unRelatorioCadastros, unRelatorioVendas,
-  unRelatorioFornecedor, unRelatorioCompras;
+  unRelatorioFornecedor, unRelatorioCompras, unRelatorioNotaF,
+  unPesquisaCliente;
 
 procedure TformMenuRelatorio.btnGerarClick(Sender: TObject);
 begin
@@ -50,77 +57,433 @@ begin
   begin
     if (cbOrdenar.ItemIndex = 0) then
     begin
+      formRelatorioCadastro.qryRelatorios.Close;
+      formRelatorioCadastro.qryRelatorios.SQL.Text :=
+        'Select * from cliente order by ID_CLIENTE';
+      formRelatorioCadastro.qryRelatorios.Open;
       formRelatorioCadastro.RLReport1.Preview;
       dtHoje.Enabled := false;
       dtOntem.Enabled := false;
     end;
     if (cbOrdenar.ItemIndex = 1) then
     begin
-      formRelatorioCadastro.RLReport1.Preview;
+
       dtHoje.Enabled := false;
       dtOntem.Enabled := false;
       formRelatorioCadastro.qryRelatorios.Close;
-      formRelatorioCadastro.qryRelatorios.Text := 'Select * from cliente order by data_movimentacao asc';
+      formRelatorioCadastro.qryRelatorios.SQL.Text :=
+        'Select * from cliente order by NOME_CLIENTE asc';
       formRelatorioCadastro.qryRelatorios.Open;
+      formRelatorioCadastro.RLReport1.Preview;
+
+    end;
+    if (cbOrdenar.ItemIndex = 2) then
+    begin
+
+      dtHoje.Enabled := false;
+      dtOntem.Enabled := false;
+      formRelatorioCadastro.qryRelatorios.Close;
+      formRelatorioCadastro.qryRelatorios.SQL.Text :=
+        'Select * from cliente order by NOME_CLIENTE asc';
+      formRelatorioCadastro.qryRelatorios.Open;
+      formRelatorioCadastro.RLReport1.Preview;
 
     end;
   end;
   if (cbTipoRel.ItemIndex = 1) then
   begin
-    dtHoje.Enabled := false;
-    dtOntem.Enabled := false;
-    formRelatorioFornecedor.RLReport1.Preview;
+    if (cbOrdenar.ItemIndex = 0) then
+    begin
+      formRelatorioFornecedor.qryFornecedores.Close;
+      formRelatorioFornecedor.qryFornecedores.SQL.Text :=
+        'Select * from fornecedor order by ID_FORNECEDOR asc';
+      formRelatorioFornecedor.qryFornecedores.Open;
+      formRelatorioFornecedor.RLReport1.Preview;
+      dtHoje.Enabled := false;
+      dtOntem.Enabled := false;
+    end;
+    if (cbOrdenar.ItemIndex = 1) then
+    begin
+
+      formRelatorioFornecedor.qryFornecedores.Close;
+      formRelatorioFornecedor.qryFornecedores.SQL.Text :=
+        'Select * from fornecedor order by RAZAO_SOCIAL';
+      formRelatorioFornecedor.qryFornecedores.Open;
+      formRelatorioFornecedor.RLReport1.Preview;
+      dtHoje.Enabled := false;
+      dtOntem.Enabled := false;
+
+    end;
+    if (cbOrdenar.ItemIndex = 2) then
+    begin
+
+      formRelatorioFornecedor.qryFornecedores.Close;
+      formRelatorioFornecedor.qryFornecedores.SQL.Text :=
+        'Select * from fornecedor order by NOME_FANTASIA';
+      formRelatorioFornecedor.qryFornecedores.Open;
+      formRelatorioFornecedor.RLReport1.Preview;
+      dtHoje.Enabled := false;
+      dtOntem.Enabled := false;
+
+    end;
   end;
 
   if (cbTipoRel.ItemIndex = 2) then
   begin
     dtHoje.Enabled := true;
-    tipo := 'E';
     dtOntem.Enabled := true;
-    // formRelatorioVendas.queryVendas.Close;
-    // formRelatorioVendas.queryVendas.SQL.Text := 'Select * from movimentacao' +
-    // ' where data_movimentacao >= :dtOntem' +
-    // ' and data_movimentacao <= :dataHoje' +
-    // ' order by data_movimentacao asc';
-    //
-    // formRelatorioVendas.queryVendas.ParamByName('dtOntem').Value :=
-    // dtOntem.DateTime;
-    // formRelatorioVendas.queryVendas.ParamByName('dataHoje').Value :=
-    // dtHoje.DateTime;
-    // formRelatorioVendas.queryVendas.Open;
-    formRelatorioVendas.RLReport1.Preview;
+    if (cbOrdenar2.ItemIndex = 0) then
+    begin
+      formRelatorioVendas.qryVendas.Close;
+      formRelatorioVendas.qryVendas.SQL.Text := 'Select * from movimentacao' +
+        ' where data_movimentacao >= :dtOntem' +
+        ' and data_movimentacao <= :dataHoje' + ' and tipo= ' + QuotedStr('E') +
+        ' order by id asc';
+
+      formRelatorioVendas.qryVendas.ParamByName('dtOntem').Value :=
+        dtOntem.DateTime;
+      formRelatorioVendas.qryVendas.ParamByName('dataHoje').Value :=
+        dtHoje.DateTime;
+      formRelatorioVendas.qryVendas.Open;
+      formRelatorioVendas.RLReport1.Preview;
+    end;
+    if (cbOrdenar2.ItemIndex = 1) then
+    begin
+      formRelatorioVendas.qryVendas.Close;
+      formRelatorioVendas.qryVendas.SQL.Text := 'Select * from movimentacao' +
+        ' where data_movimentacao >= :dtOntem' +
+        ' and data_movimentacao <= :dataHoje' + ' and tipo= ' + QuotedStr('E') +
+        ' order by id_nota asc';
+
+      formRelatorioVendas.qryVendas.ParamByName('dtOntem').Value :=
+        dtOntem.DateTime;
+      formRelatorioVendas.qryVendas.ParamByName('dataHoje').Value :=
+        dtHoje.DateTime;
+      formRelatorioVendas.qryVendas.Open;
+      formRelatorioVendas.RLReport1.Preview;
+    end;
+    if (cbOrdenar2.ItemIndex = 2) then
+    begin
+      formRelatorioVendas.qryVendas.Close;
+      formRelatorioVendas.qryVendas.SQL.Text := 'Select * from movimentacao' +
+        ' where data_movimentacao >= :dtOntem' +
+        ' and data_movimentacao <= :dataHoje' + ' and tipo= ' + QuotedStr('E') +
+        ' order by data_movimentacao asc';
+
+      formRelatorioVendas.qryVendas.ParamByName('dtOntem').Value :=
+        dtOntem.DateTime;
+      formRelatorioVendas.qryVendas.ParamByName('dataHoje').Value :=
+        dtHoje.DateTime;
+      formRelatorioVendas.qryVendas.Open;
+      formRelatorioVendas.RLReport1.Preview;
+    end;
   end;
   if (cbTipoRel.ItemIndex = 3) then
   begin
     dtHoje.Enabled := true;
-    tipo := 'E';
     dtOntem.Enabled := true;
-    // formRelatorioVendas.queryVendas.Close;
-    // formRelatorioVendas.queryVendas.SQL.Text := 'Select * from movimentacao' +
-    // ' where data_movimentacao >= :dtOntem' +
-    // ' and data_movimentacao <= :dataHoje' +
-    // ' order by data_movimentacao asc';
-    //
-    // formRelatorioVendas.queryVendas.ParamByName('dtOntem').Value :=
-    // dtOntem.DateTime;
-    // formRelatorioVendas.queryVendas.ParamByName('dataHoje').Value :=
-    // dtHoje.DateTime;
-    // formRelatorioVendas.queryVendas.Open;
-    formRelatorioCompras.RLReport1.Preview;
+    if (cbOrdenar2.ItemIndex = 0) then
+    begin
+      formRelatorioCompras.qryCompras.Close;
+      formRelatorioCompras.qryCompras.SQL.Text := 'Select * from movimentacao' +
+        ' where data_movimentacao >= :dtOntem' +
+        ' and data_movimentacao <= :dataHoje' + ' and tipo= ' + QuotedStr('S') +
+        ' order by id asc';
+
+      formRelatorioCompras.qryCompras.ParamByName('dtOntem').Value :=
+        dtOntem.DateTime;
+      formRelatorioCompras.qryCompras.ParamByName('dataHoje').Value :=
+        dtHoje.DateTime;
+      formRelatorioCompras.qryCompras.Open;
+      formRelatorioCompras.RLReport1.Preview;
+    end;
+    if (cbOrdenar2.ItemIndex = 1) then
+    begin
+      formRelatorioCompras.qryCompras.Close;
+      formRelatorioCompras.qryCompras.SQL.Text := 'Select * from movimentacao' +
+        ' where data_movimentacao >= :dtOntem' +
+        ' and data_movimentacao <= :dataHoje' + ' and tipo= ' + QuotedStr('S') +
+        ' order by id_nota asc';
+
+      formRelatorioCompras.qryCompras.ParamByName('dtOntem').Value :=
+        dtOntem.DateTime;
+      formRelatorioCompras.qryCompras.ParamByName('dataHoje').Value :=
+        dtHoje.DateTime;
+      formRelatorioCompras.qryCompras.Open;
+      formRelatorioCompras.RLReport1.Preview;
+    end;
+    if (cbOrdenar2.ItemIndex = 2) then
+    begin
+      formRelatorioCompras.qryCompras.Close;
+      formRelatorioCompras.qryCompras.SQL.Text := 'Select * from movimentacao' +
+        ' where data_movimentacao >= :dtOntem' +
+        ' and data_movimentacao <= :dataHoje' + ' and tipo= ' + QuotedStr('S') +
+        ' order by data_movimentacao asc';
+
+      formRelatorioCompras.qryCompras.ParamByName('dtOntem').Value :=
+        dtOntem.DateTime;
+      formRelatorioCompras.qryCompras.ParamByName('dataHoje').Value :=
+        dtHoje.DateTime;
+      formRelatorioCompras.qryCompras.Open;
+      formRelatorioCompras.RLReport1.Preview;
+    end;
   end;
+  if (cbTipoRel.ItemIndex = 4) then
+  begin
+    if (CheckBox1.Checked = true) then
+    begin
+      if (cbOrdenar2.ItemIndex = 0) then
+      begin
+        if (cbTipo.ItemIndex = 0) then
+        begin
+          formRelatorioNotas.qryNotas.Close;
+          formRelatorioNotas.qryNotas.SQL.Text := 'Select * from notafiscal' +
+            ' where data_emissao >= :dtOntem' + ' and data_emissao <= :dataHoje'
+            + ' and tipo_nf= ' + QuotedStr('ENTRADA') +'and cod_cli = '+ QuotedStr(edtCodcliente.Text)+ ' order by id_nota asc';
+
+          formRelatorioNotas.qryNotas.ParamByName('dtOntem').Value :=
+            dtOntem.DateTime;
+          formRelatorioNotas.qryNotas.ParamByName('dataHoje').Value :=
+            dtHoje.DateTime;
+          formRelatorioNotas.qryNotas.Open;
+          formRelatorioNotas.RLReport1.Preview;
+        end;
+        if (cbTipo.ItemIndex = 1) then
+        begin
+          formRelatorioNotas.qryNotas.Close;
+          formRelatorioNotas.qryNotas.SQL.Text := 'Select * from notafiscal' +
+            ' where data_emissao >= :dtOntem' + ' and data_emissao <= :dataHoje'
+            + ' and tipo_nf= ' + QuotedStr('SAÍDA') +'and cod_cli = '+ QuotedStr(edtCodcliente.Text)+  ' order by id_nota asc';
+
+          formRelatorioNotas.qryNotas.ParamByName('dtOntem').Value :=
+            dtOntem.DateTime;
+          formRelatorioNotas.qryNotas.ParamByName('dataHoje').Value :=
+            dtHoje.DateTime;
+          formRelatorioNotas.qryNotas.Open;
+          formRelatorioNotas.RLReport1.Preview;
+        end;
+      end;
+      if (cbOrdenar2.ItemIndex = 1) then
+      begin
+        if (cbTipo.ItemIndex = 0) then
+        begin
+          formRelatorioNotas.qryNotas.Close;
+          formRelatorioNotas.qryNotas.SQL.Text := 'Select * from notafiscal' +
+            ' where data_emissao >= :dtOntem' + ' and data_emissao <= :dataHoje'
+            + ' and tipo_nf= ' + QuotedStr('ENTRADA') +'and cod_cli = '+ QuotedStr(edtCodcliente.Text)+
+            ' order by num_nota asc';
+
+          formRelatorioNotas.qryNotas.ParamByName('dtOntem').Value :=
+            dtOntem.DateTime;
+          formRelatorioNotas.qryNotas.ParamByName('dataHoje').Value :=
+            dtHoje.DateTime;
+          formRelatorioNotas.qryNotas.Open;
+          formRelatorioNotas.RLReport1.Preview;
+        end;
+        if (cbTipo.ItemIndex = 1) then
+        begin
+          formRelatorioNotas.qryNotas.Close;
+          formRelatorioNotas.qryNotas.SQL.Text := 'Select * from notafiscal' +
+            ' where data_emissao >= :dtOntem' + ' and data_emissao <= :dataHoje'
+            + ' and tipo_nf= ' + QuotedStr('SAÍDA') +'and cod_cli = '+ QuotedStr(edtCodcliente.Text)+  ' order by num_nota asc';
+
+          formRelatorioNotas.qryNotas.ParamByName('dtOntem').Value :=
+            dtOntem.DateTime;
+          formRelatorioNotas.qryNotas.ParamByName('dataHoje').Value :=
+            dtHoje.DateTime;
+          formRelatorioNotas.qryNotas.Open;
+          formRelatorioNotas.RLReport1.Preview;
+        end;
+      end;
+      if (cbOrdenar2.ItemIndex = 2) then
+      begin
+        if (cbTipo.ItemIndex = 0) then
+        begin
+          formRelatorioNotas.qryNotas.Close;
+          formRelatorioNotas.qryNotas.SQL.Text := 'Select * from notafiscal' +
+            ' where data_emissao >= :dtOntem' + ' and data_emissao <= :dataHoje'
+            + ' and tipo_nf = ' + QuotedStr('ENTRADA') +'and cod_cli = '+ QuotedStr(edtCodcliente.Text)+
+            ' order by data_emissao asc';
+
+          formRelatorioNotas.qryNotas.ParamByName('dtOntem').Value :=
+            dtOntem.DateTime;
+          formRelatorioNotas.qryNotas.ParamByName('dataHoje').Value :=
+            dtHoje.DateTime;
+          formRelatorioNotas.qryNotas.Open;
+          formRelatorioNotas.RLReport1.Preview;
+        end;
+        if (cbTipo.ItemIndex = 1) then
+        begin
+
+          formRelatorioNotas.qryNotas.Close;
+          formRelatorioNotas.qryNotas.SQL.Text := 'Select * from notafiscal' +
+            ' where data_emissao >= :dtOntem' + ' and data_emissao <= :dataHoje'
+            + ' and tipo_nf= ' + QuotedStr('SAÍDA') +'and cod_cli = '+ QuotedStr(edtCodcliente.Text)+
+            ' order by data_emissao asc';
+
+          formRelatorioNotas.qryNotas.ParamByName('dtOntem').Value :=
+            dtOntem.DateTime;
+          formRelatorioNotas.qryNotas.ParamByName('dataHoje').Value :=
+            dtHoje.DateTime;
+          formRelatorioNotas.qryNotas.Open;
+          formRelatorioNotas.RLReport1.Preview;
+        end;
+      end;
+    end
+    else
+    begin
+      if (cbOrdenar2.ItemIndex = 0) then
+      begin
+        if (cbTipo.ItemIndex = 0) then
+        begin
+          formRelatorioNotas.qryNotas.Close;
+          formRelatorioNotas.qryNotas.SQL.Text := 'Select * from notafiscal' +
+            ' where data_emissao >= :dtOntem' + ' and data_emissao <= :dataHoje'
+            + ' and tipo_nf= ' + QuotedStr('ENTRADA') + ' order by id_nota asc';
+
+          formRelatorioNotas.qryNotas.ParamByName('dtOntem').Value :=
+            dtOntem.DateTime;
+          formRelatorioNotas.qryNotas.ParamByName('dataHoje').Value :=
+            dtHoje.DateTime;
+          formRelatorioNotas.qryNotas.Open;
+          formRelatorioNotas.RLReport1.Preview;
+        end;
+        if (cbTipo.ItemIndex = 1) then
+        begin
+          formRelatorioNotas.qryNotas.Close;
+          formRelatorioNotas.qryNotas.SQL.Text := 'Select * from notafiscal' +
+            ' where data_emissao >= :dtOntem' + ' and data_emissao <= :dataHoje'
+            + ' and tipo_nf= ' + QuotedStr('SAÍDA') + ' order by id_nota asc';
+
+          formRelatorioNotas.qryNotas.ParamByName('dtOntem').Value :=
+            dtOntem.DateTime;
+          formRelatorioNotas.qryNotas.ParamByName('dataHoje').Value :=
+            dtHoje.DateTime;
+          formRelatorioNotas.qryNotas.Open;
+          formRelatorioNotas.RLReport1.Preview;
+        end;
+      end;
+      if (cbOrdenar2.ItemIndex = 1) then
+      begin
+        if (cbTipo.ItemIndex = 0) then
+        begin
+          formRelatorioNotas.qryNotas.Close;
+          formRelatorioNotas.qryNotas.SQL.Text := 'Select * from notafiscal' +
+            ' where data_emissao >= :dtOntem' + ' and data_emissao <= :dataHoje'
+            + ' and tipo_nf= ' + QuotedStr('ENTRADA') +
+            ' order by num_nota asc';
+
+          formRelatorioNotas.qryNotas.ParamByName('dtOntem').Value :=
+            dtOntem.DateTime;
+          formRelatorioNotas.qryNotas.ParamByName('dataHoje').Value :=
+            dtHoje.DateTime;
+          formRelatorioNotas.qryNotas.Open;
+          formRelatorioNotas.RLReport1.Preview;
+        end;
+        if (cbTipo.ItemIndex = 1) then
+        begin
+          formRelatorioNotas.qryNotas.Close;
+          formRelatorioNotas.qryNotas.SQL.Text := 'Select * from notafiscal' +
+            ' where data_emissao >= :dtOntem' + ' and data_emissao <= :dataHoje'
+            + ' and tipo_nf= ' + QuotedStr('SAÍDA') + ' order by num_nota asc';
+
+          formRelatorioNotas.qryNotas.ParamByName('dtOntem').Value :=
+            dtOntem.DateTime;
+          formRelatorioNotas.qryNotas.ParamByName('dataHoje').Value :=
+            dtHoje.DateTime;
+          formRelatorioNotas.qryNotas.Open;
+          formRelatorioNotas.RLReport1.Preview;
+        end;
+      end;
+      if (cbOrdenar2.ItemIndex = 2) then
+      begin
+        if (cbTipo.ItemIndex = 0) then
+        begin
+          formRelatorioNotas.qryNotas.Close;
+          formRelatorioNotas.qryNotas.SQL.Text := 'Select * from notafiscal' +
+            ' where data_emissao >= :dtOntem' + ' and data_emissao <= :dataHoje'
+            + ' and tipo_nf = ' + QuotedStr('ENTRADA') +
+            ' order by data_emissao asc';
+
+          formRelatorioNotas.qryNotas.ParamByName('dtOntem').Value :=
+            dtOntem.DateTime;
+          formRelatorioNotas.qryNotas.ParamByName('dataHoje').Value :=
+            dtHoje.DateTime;
+          formRelatorioNotas.qryNotas.Open;
+          formRelatorioNotas.RLReport1.Preview;
+        end;
+        if (cbTipo.ItemIndex = 1) then
+        begin
+          formRelatorioNotas.qryNotas.Close;
+          formRelatorioNotas.qryNotas.SQL.Text := 'Select * from notafiscal' +
+            ' where data_emissao >= :dtOntem' + ' and data_emissao <= :dataHoje'
+            + ' and tipo_nf= ' + QuotedStr('SAÍDA') +
+            ' order by data_emissao asc';
+
+          formRelatorioNotas.qryNotas.ParamByName('dtOntem').Value :=
+            dtOntem.DateTime;
+          formRelatorioNotas.qryNotas.ParamByName('dataHoje').Value :=
+            dtHoje.DateTime;
+          formRelatorioNotas.qryNotas.Open;
+          formRelatorioNotas.RLReport1.Preview;
+        end;
+      end;
+    end;
+  end;
+end;
+
+procedure TformMenuRelatorio.btnPesquisarClick(Sender: TObject);
+begin
+  formPesquisaCliente.ShowModal;
+  edtCodcliente.Text := formPesquisaCliente.qryPesquisaCliente.FieldByName
+    ('ID_CLIENTE').Value;
 end;
 
 procedure TformMenuRelatorio.cbTipoRelChange(Sender: TObject);
 begin
-  if (cbTipoRel.ItemIndex = 2) or (cbTipoRel.ItemIndex = 3) then
+  if (cbTipoRel.ItemIndex = 2) or (cbTipoRel.ItemIndex = 3) or
+    (cbTipoRel.ItemIndex = 4) then
   begin
+    cbOrdenar.Visible := false;
+    cbOrdenar2.Visible := true;
     dtHoje.Enabled := true;
     dtOntem.Enabled := true;
   end
   else
   begin
+    cbOrdenar.Visible := true;
+    cbOrdenar2.Visible := false;
     dtHoje.Enabled := false;
     dtOntem.Enabled := false;
+  end;
+  if (cbTipoRel.ItemIndex = 4) then
+  begin
+    lbTipo.Visible := true;
+    cbTipo.Visible := true;
+    CheckBox1.Visible := true;
+  end
+  else
+  begin
+    lbTipo.Visible := false;
+    cbTipo.Visible := false;
+    CheckBox1.Visible := false;
+  end;
+end;
+
+procedure TformMenuRelatorio.CheckBox1Click(Sender: TObject);
+begin
+  if (CheckBox1.Checked = true) then
+  begin
+    Label5.Visible := true;
+    btnPesquisar.Visible := true;
+    edtCodcliente.Visible := true;
+
+  end
+  else
+  begin
+    Label5.Visible := false;
+    btnPesquisar.Visible := false;
+    edtCodcliente.Visible := false;
   end;
 end;
 

@@ -40,9 +40,25 @@ object formMenuRelatorio: TformMenuRelatorio
     Height = 15
     Caption = 'Per'#237'odo:'
   end
+  object lbTipo: TLabel
+    Left = 271
+    Top = 223
+    Width = 69
+    Height = 15
+    Caption = 'Tipo de nota:'
+    Visible = False
+  end
+  object Label5: TLabel
+    Left = 243
+    Top = 273
+    Width = 97
+    Height = 15
+    Caption = 'C'#243'digo do cliente:'
+    Visible = False
+  end
   object btnGerar: TButton
-    Left = 374
-    Top = 280
+    Left = 386
+    Top = 320
     Width = 75
     Height = 25
     Caption = 'GERAR'
@@ -64,7 +80,6 @@ object formMenuRelatorio: TformMenuRelatorio
     Top = 133
     Width = 228
     Height = 23
-    ItemIndex = 0
     TabOrder = 2
     Text = 'Selecione o tipo de relat'#243'rio'
     OnChange = cbTipoRelChange
@@ -72,7 +87,8 @@ object formMenuRelatorio: TformMenuRelatorio
       '1 - Listar Clientes'
       '2 - Listar Fornecedores'
       '3 - Listar Vendas'
-      '4 - Listar Compras')
+      '4 - Listar Compras'
+      '5 - Listar Notas')
   end
   object cbOrdenar: TComboBox
     Left = 344
@@ -83,7 +99,8 @@ object formMenuRelatorio: TformMenuRelatorio
     Text = 'Selecione o tipo de oredena'#231#227'o'
     Items.Strings = (
       'C'#243'digo'
-      'Nome')
+      'Nome/Raz'#227'o Social'
+      'Nome Fantasia')
   end
   object dtOntem: TDateTimePicker
     Left = 344
@@ -95,13 +112,59 @@ object formMenuRelatorio: TformMenuRelatorio
     Enabled = False
     TabOrder = 4
   end
-  object FDQuery1: TFDQuery
-    Connection = DataModule1.FDConnection1
-    Left = 800
-    Top = 48
+  object cbOrdenar2: TComboBox
+    Left = 344
+    Top = 162
+    Width = 228
+    Height = 23
+    TabOrder = 5
+    Text = 'Selecione o tipo de oredena'#231#227'o'
+    Visible = False
+    Items.Strings = (
+      'Listar por C'#243'digo'
+      'Listar por N'#250'mero de nota'
+      'Listar por Data')
   end
-  object DataSource1: TDataSource
-    Left = 800
-    Top = 112
+  object cbTipo: TComboBox
+    Left = 344
+    Top = 220
+    Width = 228
+    Height = 23
+    TabOrder = 6
+    Text = 'Selecione o tipo de nota'
+    Visible = False
+    Items.Strings = (
+      'ENTRADA'
+      'SA'#205'DA')
+  end
+  object btnPesquisar: TButton
+    Left = 578
+    Top = 267
+    Width = 75
+    Height = 25
+    Caption = 'PESQUISAR'
+    TabOrder = 7
+    Visible = False
+    OnClick = btnPesquisarClick
+  end
+  object edtCodcliente: TDBEdit
+    Left = 344
+    Top = 268
+    Width = 228
+    Height = 23
+    DataField = 'COD_CLI'
+    Enabled = False
+    TabOrder = 8
+    Visible = False
+  end
+  object CheckBox1: TCheckBox
+    Left = 344
+    Top = 245
+    Width = 228
+    Height = 17
+    Caption = 'Tirar Relat'#243'rio de cliente'
+    TabOrder = 9
+    Visible = False
+    OnClick = CheckBox1Click
   end
 end

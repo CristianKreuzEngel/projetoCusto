@@ -89,7 +89,7 @@ object formCadastroCliente: TformCadastroCliente
       ParentFont = False
     end
     object btnNovo: TImage
-      Left = 583
+      Left = 577
       Top = 39
       Width = 57
       Height = 50
@@ -270,7 +270,7 @@ object formCadastroCliente: TformCadastroCliente
       ExplicitLeft = 589
     end
     object btnSalvar: TImage
-      Left = 668
+      Left = 662
       Top = 288
       Width = 57
       Height = 50

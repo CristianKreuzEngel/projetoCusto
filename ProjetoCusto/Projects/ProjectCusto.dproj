@@ -156,7 +156,11 @@
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="unRelatorioSemanal.pas">
-            <Form>Form1</Form>
+            <Form>formRelatorioSemanal</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="unRelatorioNotaF.pas">
+            <Form>formRelatorioNotas</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Base">

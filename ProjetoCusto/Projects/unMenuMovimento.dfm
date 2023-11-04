@@ -10,6 +10,7 @@ object formMenuRelatorioMovi: TformMenuRelatorioMovi
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
+  OnShow = FormShow
   TextHeight = 15
   object Label1: TLabel
     Left = 288
@@ -55,21 +56,12 @@ object formMenuRelatorioMovi: TformMenuRelatorioMovi
     Height = 23
     TabOrder = 1
     Text = 'Selecione o tipo de relat'#243'rio'
+    OnChange = cbTipoRelChange
     Items.Strings = (
       '1 - Movimento di'#225'rio'
       '2 - Movimento caixa'
       '3 - Listar Entradas'
       '4 - Listar Sa'#237'das')
-  end
-  object cbOrdenar: TComboBox
-    Left = 344
-    Top = 162
-    Width = 228
-    Height = 23
-    TabOrder = 2
-    Items.Strings = (
-      'C'#243'digo'
-      'Nome')
   end
   object dtHoje: TDateTimePicker
     Left = 467
@@ -78,7 +70,7 @@ object formMenuRelatorioMovi: TformMenuRelatorioMovi
     Height = 23
     Date = 45195.000000000000000000
     Time = 0.809366921297623800
-    TabOrder = 3
+    TabOrder = 2
   end
   object dtOntem: TDateTimePicker
     Left = 344
@@ -87,6 +79,18 @@ object formMenuRelatorioMovi: TformMenuRelatorioMovi
     Height = 23
     Date = 45195.000000000000000000
     Time = 0.809366921297623800
+    TabOrder = 3
+  end
+  object cbOrdenar2: TComboBox
+    Left = 344
+    Top = 162
+    Width = 228
+    Height = 23
     TabOrder = 4
+    Text = 'Selecione o tipo de oredena'#231#227'o'
+    Items.Strings = (
+      'Listar por cliente'
+      'Listar por n'#250'mero de nota'
+      'Listar por Data')
   end
 end
